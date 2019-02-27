@@ -1,6 +1,6 @@
-### Order application - run on OpenShift ###
+## Order application ##
 
-A sample application showing how to send and receive events to/from kafka.
+A sample application showing how to send and receive events to/from kafka.<br>
 The application simulates the creation of an Order and a Shipment: <br>
  - an Order contains several OrderItem
  - a Shipment can be created only when all items beloging to an order are READY.
@@ -9,7 +9,9 @@ The Order events are sent to a Kafka topic via Order service.<br>
 The Order events are received by Order process service and sent to the Shipment service via a Rest call.<br>
 The Shipment service aggregates the events and produces a Shipment object. The Shipment object is also saved on DBMS.
 
-- Required software
+### Deploy on OpenShift ###
+
+Required software:
 
 - You need OpenShift 3.11 and a user with cluster-admin role (to deploy the strimzi operators)
 - You will run the Apache Kafka (and Zookeeper) cluster on OpenShift using Strmizi:
