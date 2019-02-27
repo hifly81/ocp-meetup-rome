@@ -1,5 +1,3 @@
-# Examples with Apache Kafka
-
 ### Order application - run on OpenShift ###
 
 A sample application showing how to send and receive events to/from kafka.
