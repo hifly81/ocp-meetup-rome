@@ -21,8 +21,8 @@ https://strimzi.io
 https://maven.fabric8.io/
 - Order process service will be deployed on OpenShift using the openjdk18 image for OpenShift
 https://registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
-- Order service will be deployed on OpenShift using the openjdk18 image for OpenShift and running (on demand) and OpenShift job that will run
-a scenario with 500 orders.
+- Order service will be deployed on OpenShift using the openjdk18 image for OpenShift.<br>
+On demand aan OpenShift job will run a scenario with 500 orders.
 
 This is an image showing your final namespace:
 ![ScreenShot 1](order-sample/images/myproject.png)
