@@ -15,11 +15,12 @@ Required software:<br>
 Strimzi - https://strimzi.io<br>
 Prometheus - https://prometheus.io/<br>
 Grafana - https://grafana.com<br>
+Postgres
 
 - You need OpenShift 3.11 and a user with cluster-admin role (to deploy the strimzi operators)
 - You will run the Apache Kafka (and Zookeeper) cluster on OpenShift using Strimzi
-- You will also deploy on Openshift, Promethes and Grafana to collect and show some kafka metrics
-- Shipment service will de deployed on OpenShift using the fabric8 maven plugin
+- You will also deploy on Openshift, Prometheus and Grafana to collect and show some kafka metrics
+- Shipment service will de deployed on OpenShift using the fabric8 maven plugin. This is a spring boot service.
 https://maven.fabric8.io/
 - Order process service will be deployed on OpenShift using the openjdk18 image for OpenShift
 https://registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
@@ -105,11 +106,13 @@ oc new-app order-process-service -e kafka.broker.list=my-cluster-kafka-bootstrap
 cd order-service
 oc new-build --binary --image-stream openjdk18-openshift --name order-service
 oc start-build order-service --from-dir=.
+oc new-app order-service
 ```
 
 - Run a simulated scenario (send 500 orders)
 
 An OpenShift job invoking the main java class for the Order Service will be created and a set of 500 orders will be delivered.
+https://docs.openshift.com/container-platform/3.11/dev_guide/jobs.html
 
 ```
 cd order-service/src/main/resources
