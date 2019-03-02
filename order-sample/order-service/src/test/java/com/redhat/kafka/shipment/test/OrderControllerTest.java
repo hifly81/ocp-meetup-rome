@@ -1,4 +1,4 @@
-package com.redhat.kafka.demo;
+package com.redhat.kafka.shipment.test;
 
 import com.redhat.kafka.order.controller.OrderController;
 import com.redhat.kafka.order.event.OrderEvent;

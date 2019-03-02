@@ -1,6 +1,6 @@
-package com.redhat.kafka.demo.consumer.partition;
+package com.redhat.kafka.order.process.consumer.partition;
 
-import com.redhat.kafka.demo.consumer.offset.OffsetManager;
+import com.redhat.kafka.order.process.consumer.offset.OffsetManager;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;

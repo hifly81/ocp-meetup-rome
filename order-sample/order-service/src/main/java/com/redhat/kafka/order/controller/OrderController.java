@@ -1,7 +1,7 @@
 package com.redhat.kafka.order.controller;
 
-import com.redhat.kafka.demo.producer.RecordMetadataUtil;
-import com.redhat.kafka.demo.producer.serializer.json.JsonProducer;
+import com.redhat.kafka.order.producer.RecordMetadataUtil;
+import com.redhat.kafka.order.producer.serializer.json.JsonProducer;
 import com.redhat.kafka.order.event.ItemEvent;
 import com.redhat.kafka.order.event.OrderEvent;
 import com.redhat.kafka.order.model.Order;

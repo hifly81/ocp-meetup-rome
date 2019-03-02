@@ -1,4 +1,4 @@
-package com.redhat.kafka.demo.consumer.offset;
+package com.redhat.kafka.order.process.consumer.offset;
 
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;

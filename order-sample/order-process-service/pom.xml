@@ -3,31 +3,34 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>com.redhat.kafka</groupId>
+    <parent>
+        <groupId>com.redhat.kafka</groupId>
+        <artifactId>order-sample</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <artifactId>order-process-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <kafka.version>1.1.0</kafka.version>
-        <slf4j.version>1.7.5</slf4j.version>
-        <junit.version>4.12</junit.version>
-    </properties>
-
 
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.12</artifactId>
-            <version>${kafka.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
         </dependency>
 
     </dependencies>

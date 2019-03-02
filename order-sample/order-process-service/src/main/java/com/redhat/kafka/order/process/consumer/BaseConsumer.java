@@ -1,8 +1,8 @@
-package com.redhat.kafka.demo.consumer;
+package com.redhat.kafka.order.process.consumer;
 
-import com.redhat.kafka.demo.consumer.handle.ConsumerHandle;
-import com.redhat.kafka.demo.consumer.offset.OffsetManager;
-import com.redhat.kafka.demo.consumer.partition.PartitionListener;
+import com.redhat.kafka.order.process.consumer.handle.ConsumerHandle;
+import com.redhat.kafka.order.process.consumer.offset.OffsetManager;
+import com.redhat.kafka.order.process.consumer.partition.PartitionListener;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.PartitionInfo;
 import org.apache.kafka.common.TopicPartition;

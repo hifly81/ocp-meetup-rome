@@ -1,6 +1,6 @@
-package com.redhat.kafka.demo.consumer;
+package com.redhat.kafka.order.process.consumer;
 
-import com.redhat.kafka.demo.consumer.handle.ConsumerHandle;
+import com.redhat.kafka.order.process.consumer.handle.ConsumerHandle;
 
 import java.util.Properties;
 

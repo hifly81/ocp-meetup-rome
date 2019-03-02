@@ -1,4 +1,4 @@
-package com.redhat.kafka.demo.producer;
+package com.redhat.kafka.order.producer;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;

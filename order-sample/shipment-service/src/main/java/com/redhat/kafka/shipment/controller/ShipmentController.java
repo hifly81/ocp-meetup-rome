@@ -85,15 +85,12 @@ public class ShipmentController {
                             order.setItems(orderItems);
                             Shipment shipment = saveShipment(order, itemsPrice);
                             System.out.printf("Created shipment %s with %d items\n", shipment, shipment.getOrder().getItems().size());
-
-
                         }
-
                     }
                 }
             }
-
-
+        } else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         return new ResponseEntity<>(HttpStatus.OK);

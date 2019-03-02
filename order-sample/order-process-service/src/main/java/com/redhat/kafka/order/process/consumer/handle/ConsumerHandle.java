@@ -1,4 +1,4 @@
-package com.redhat.kafka.demo.consumer.handle;
+package com.redhat.kafka.order.process.consumer.handle;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 

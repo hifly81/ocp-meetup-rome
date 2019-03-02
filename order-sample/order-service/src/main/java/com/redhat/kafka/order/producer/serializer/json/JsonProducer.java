@@ -1,9 +1,9 @@
-package com.redhat.kafka.demo.producer.serializer.json;
+package com.redhat.kafka.order.producer.serializer.json;
 
-import com.redhat.kafka.demo.producer.AbstractKafkaProducer;
-import com.redhat.kafka.demo.producer.BaseKafkaProducer;
-import com.redhat.kafka.demo.producer.BaseProducerCallback;
-import com.redhat.kafka.demo.producer.KafkaConfig;
+import com.redhat.kafka.order.producer.AbstractKafkaProducer;
+import com.redhat.kafka.order.producer.BaseKafkaProducer;
+import com.redhat.kafka.order.producer.BaseProducerCallback;
+import com.redhat.kafka.order.producer.KafkaConfig;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

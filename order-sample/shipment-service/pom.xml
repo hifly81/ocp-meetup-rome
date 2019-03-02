@@ -3,9 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.redhat.kafka</groupId>
+    <parent>
+        <groupId>com.redhat.kafka</groupId>
+        <artifactId>order-sample</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <artifactId>shipment-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -16,9 +21,6 @@
         <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
         <fasterxml.version>2.8.9.redhat-1</fasterxml.version>
         <postgresql.version>9.4.1212</postgresql.version>
-        <wiremock.version>2.6.0</wiremock.version>
-        <commons-io.version>2.5</commons-io.version>
-        <rest-assured.version>3.0.3</rest-assured.version>
         <fabric8-maven-plugin.version>3.5.38</fabric8-maven-plugin.version>
     </properties>
 
@@ -62,18 +64,24 @@
             <artifactId>jackson-datatype-jdk8</artifactId>
             <version>${fasterxml.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${fasterxml.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+
 
         <!-- Testing -->
         <dependency>
@@ -82,24 +90,12 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-standalone</artifactId>
-            <version>${wiremock.version}</version>
-            <scope>test</scope>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <scope>test</scope>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
-            <version>${rest-assured.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>

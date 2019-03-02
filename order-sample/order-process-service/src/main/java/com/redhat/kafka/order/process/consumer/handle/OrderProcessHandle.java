@@ -1,6 +1,5 @@
 package com.redhat.kafka.order.process.consumer.handle;
 
-import com.redhat.kafka.demo.consumer.handle.ConsumerHandle;
 import com.redhat.kafka.order.process.event.OrderEvent;
 import com.redhat.kafka.order.process.shipment.RestClient;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
