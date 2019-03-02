@@ -1,4 +1,4 @@
-package com.redhat.kafka.shipment.test;
+package com.redhat.kafka.order.test;
 
 import kafka.server.KafkaConfig;
 import kafka.server.KafkaServerStartable;

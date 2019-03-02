@@ -9,6 +9,7 @@ The Order events are sent to a Kafka topic via Order service.<br>
 The Order events are received by Order process service and sent to the Shipment service via a Rest call.<br>
 The Shipment service aggregates the events and produces a Shipment object. The Shipment object is also saved on DBMS.
 
+
 ### Deploy on OpenShift ###
 
 Required software:<br>
@@ -87,7 +88,7 @@ oc new-app -e POSTGRESQL_USER=orders -e POSTGRESQL_PASSWORD=orders -e POSTGRESQL
 
 ```
 cd shipment-service
-mvn package fabric8:deploy -Popenshift -DskipTests
+mvn package fabric8:deploy -Popenshift
 ```
 
 - Deploy a container for the order process service (we will use source to image build in openshift)
