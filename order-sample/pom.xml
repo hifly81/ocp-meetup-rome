@@ -2,19 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.redhat.kafka</groupId>
-        <artifactId>kafka-play</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>	
 
+    <groupId>com.redhat.kafka</groupId>
     <artifactId>order-sample</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>order-service</module>
         <module>order-process-service</module>
-	<module>shipment-service</module>
+	    <module>shipment-service</module>
     </modules>
 
     <properties>
@@ -24,19 +21,10 @@
         <kafka.version>1.1.0</kafka.version>
         <slf4j.version>1.7.5</slf4j.version>
         <junit.version>4.12</junit.version>
+        <curator.version>2.8.0</curator.version>
 
     </properties>
 
-    <repositories>
-        <repository>
-            <id>confluent</id>
-            <url>http://packages.confluent.io/maven/</url>
-        </repository>
-    </repositories>
-
-
-    <pluginRepositories>
-    </pluginRepositories>
 
     <dependencyManagement>
         <dependencies>
@@ -57,6 +45,13 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-test</artifactId>
+                <version>${curator.version}</version>
                 <scope>test</scope>
             </dependency>
 

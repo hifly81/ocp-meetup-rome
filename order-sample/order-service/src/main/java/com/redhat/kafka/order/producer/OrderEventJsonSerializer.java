@@ -3,10 +3,14 @@ package com.redhat.kafka.order.producer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redhat.kafka.order.event.OrderEvent;
 import org.apache.kafka.common.serialization.Serializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
 public class OrderEventJsonSerializer implements Serializer<OrderEvent> {
+
+    private Logger log = LoggerFactory.getLogger(OrderEventJsonSerializer.class);
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {}
@@ -18,7 +22,7 @@ public class OrderEventJsonSerializer implements Serializer<OrderEvent> {
         try {
             retVal = objectMapper.writeValueAsString(data).getBytes();
         } catch (Exception exception) {
-            System.out.println("Error in serializing object"+ data);
+            log.error("Error in serializing object {}", data, exception);
         }
         return retVal;
 

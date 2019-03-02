@@ -8,12 +8,16 @@ import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class JsonProducer<T> extends AbstractKafkaProducer<String, T> implements BaseKafkaProducer<String, T> {
+
+    private Logger log = LoggerFactory.getLogger(JsonProducer.class);
 
     public void start(Properties properties) {
         producer = new KafkaProducer(
@@ -38,9 +42,9 @@ public class JsonProducer<T> extends AbstractKafkaProducer<String, T> implements
         try {
             recordMetadata = producer.send(producerRecord).get();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("Error in produceSync!", e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            log.error("Error in produceSync!", e);
         }
         return recordMetadata;
     }
