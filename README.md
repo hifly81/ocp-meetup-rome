@@ -10,6 +10,13 @@ The Order events are received by Order process service and sent to the Shipment 
 The Shipment service aggregates the events and produces a Shipment object. The Shipment object is also saved on DBMS.
 
 
+### Execute tests ###
+```
+cd order-sample
+mvn clean test
+```
+
+
 ### Deploy on OpenShift ###
 
 Required software:<br>

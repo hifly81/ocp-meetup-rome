@@ -1,32 +1,39 @@
 package com.redhat.kafka.order.process.shipment;
 
 import com.redhat.kafka.order.process.event.OrderEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class RestClient {
+public class ShipmentClient {
 
-    private static final String REST_SHIPMENT_URI =
-            System.getenv("shipment.url") != null? System.getenv("shipment.url") :"http://localhost:8080/shipment";
+    private Logger log = LoggerFactory.getLogger(ShipmentClient.class);
 
-    public void sendOrderEvent(OrderEvent orderEvent) {
+    public int sendOrderEvent(
+            String shipmentUrl,
+            OrderEvent orderEvent) {
+
+        HttpURLConnection conn = null;
 
         try {
 
-            URL url = new URL(REST_SHIPMENT_URI);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            URL url = new URL(shipmentUrl);
+            conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
 
             List<String> items = orderEvent.getItemIds();
+
+            if(items == null || items.size() == 0)
+                return HttpURLConnection.HTTP_NO_CONTENT;
+
             StringBuilder sb = new StringBuilder();
             sb.append("[");
             for(int i = 0; i < items.size(); i ++) {
@@ -44,27 +51,30 @@ public class RestClient {
                 input = "{\"eventType\":\""+orderEvent.getEventType()+"\",\"id\":\""+orderEvent.getId()+"\",\"name\":\""+orderEvent.getName()+"\",\"itemIds\":"+sb.toString()+",\"itemEvent\":"+inputItem+"}";
             } else {
                 input = "{\"eventType\":\""+orderEvent.getEventType()+"\",\"id\":\""+orderEvent.getId()+"\",\"name\":\""+orderEvent.getName()+"\",\"itemIds\":"+sb.toString()+"}";
-
             }
 
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
 
-            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK)
-                throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            String output;
-            while ((output = br.readLine()) != null)
-                System.out.printf(output+"\n");
+            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                log.error("Error in sendOrderEvent, error code {}", conn.getResponseCode());
+                return conn.getResponseCode();
+            }
 
             conn.disconnect();
 
+            return HttpURLConnection.HTTP_OK;
+
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.error("Error in sendOrderEvent!", e);
+            return HttpURLConnection.HTTP_INTERNAL_ERROR;
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error in sendOrderEvent!", e);
+            return HttpURLConnection.HTTP_INTERNAL_ERROR;
+        } finally {
+            if(conn != null)
+                conn.disconnect();
         }
 
     }
