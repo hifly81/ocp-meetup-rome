@@ -31,14 +31,17 @@ On demand an OpenShift job will run a scenario with 500 orders.
 This is an image showing your final namespace:
 ![ScreenShot 1](order-sample/images/myproject.png)
 
-- Download strimzi, version 0.10
+
+Follow these instructions to set up the demo:
+
+- Download strimzi, version 0.10 (try the same with version 0.11, released recently)
 
 ```
 wget https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.10.0/strimzi-0.10.0.tar.gz
 tar xvf strimzi-0.10.0.tar.gz
 ```
 
-- Create an OpenShift project and kafka cluster with 3 brokers (3 zookeeper)
+- Create an OpenShift project and kafka cluster with 3 brokers and 3 zookeeper. The OpenShift objects will be managed using the strimzi cluster operator.
 
 ```
 oc login -u <user> -p <password>
@@ -48,7 +51,7 @@ oc apply -f $STRIMZI_HOME/examples/templates/cluster-operator -n myproject
 oc apply -f $STRIMZI_HOME/examples/metrics/kafka-metrics.yaml -n myproject
 ```
 
-- Optional, deploy kafka connect and test a sample producer and a sample consumer
+- Optional, deploy kafka connect and test a sample producer and a sample consumer.
 
 ```
 oc apply -f $STRIMZI_HOME/examples/kafka-connect/kafka-connect.yaml -n myproject
@@ -56,7 +59,7 @@ oc run kafka-producer -ti --image=strimzi/kafka:0.10.0-kafka-2.1.0 --rm=true --r
 oc run kafka-consumer -ti --image=strimzi/kafka:0.10.0-kafka-2.1.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic --from-beginning
 ```
 
-- Install strimzi metrics, prometheus and grafana
+- Install strimzi metrics, prometheus and grafana. Grafana console will be forwarded on localhost, port 3000.
 
 ```
 wget https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.10.0/metrics/examples/prometheus/kubernetes.yaml
@@ -71,7 +74,7 @@ oc port-forward <name-of-grafana-pod> 3000:3000
 - Import grafana dashboards
 
 Login to http://localhost:3000 (admin/admin) and follow the steps available at:<br>
-https://strimzi.io/docs/latest/#grafana_dashboard
+https://strimzi.io/docs/latest/#grafana_dashboard <br> in order to import the kafka and zookeeper sample dashboard provided by strimzi.
 
 Grafana kafka dashboard:
 
