@@ -81,7 +81,10 @@ oc port-forward <name-of-grafana-pod> 3000:3000
 - Import grafana dashboards
 
 Login to http://localhost:3000 (admin/admin) and follow the steps available at:<br>
-https://strimzi.io/docs/latest/#grafana_dashboard <br> in order to import the kafka and zookeeper sample dashboard provided by strimzi.
+https://strimzi.io/docs/latest/#grafana_dashboard <br> in order to import the kafka and zookeeper sample dashboard provided by strimzi.<br><br>
+Dashboard can be downloaded at:<br>
+https://github.com/strimzi/strimzi-kafka-operator/blob/master/metrics/examples/grafana/strimzi-kafka.json <br>
+https://github.com/strimzi/strimzi-kafka-operator/blob/master/metrics/examples/grafana/strimzi-zookeeper.json
 
 Grafana kafka dashboard:
 
@@ -92,6 +95,7 @@ Grafana kafka dashboard:
 ```
 oc import-image my-rhscl/postgresql-96-rhel7 --from=registry.access.redhat.com/rhscl/postgresql-96-rhel7 --confirm -n myproject
 oc new-app -e POSTGRESQL_USER=orders -e POSTGRESQL_PASSWORD=orders -e POSTGRESQL_DATABASE=orders postgresql-96-rhel7 -n myproject
+oc port-forward <name-of-postgres-pod> 5432:5432
 ```
 
 - Deploy a container for the shipment service (we will use fabric8 maven plugin)
