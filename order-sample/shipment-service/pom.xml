@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         
         <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
-        <fasterxml.version>2.8.9.redhat-1</fasterxml.version>
+        <fasterxml.version>2.8.9</fasterxml.version>
         <postgresql.version>9.4.1212</postgresql.version>
         <fabric8-maven-plugin.version>3.5.38</fabric8-maven-plugin.version>
     </properties>
