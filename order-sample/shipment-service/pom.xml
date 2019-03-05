@@ -3,12 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.redhat.kafka</groupId>
-        <artifactId>order-sample</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
 
+    <groupId>com.redhat.kafka</groupId>
+    <version>0.0.1-SNAPSHOT</version>
     <artifactId>shipment-service</artifactId>
     <packaging>jar</packaging>
 
@@ -19,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         
         <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
-        <fasterxml.version>2.8.9.redhat-1</fasterxml.version>
+        <fasterxml.version>2.8.9</fasterxml.version>
         <postgresql.version>9.4.1212</postgresql.version>
         <fabric8-maven-plugin.version>3.5.38</fabric8-maven-plugin.version>
     </properties>
@@ -80,6 +77,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+            <version>1.7.5</version>
         </dependency>
 
 
@@ -94,6 +92,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

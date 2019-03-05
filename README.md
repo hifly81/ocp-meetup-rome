@@ -12,7 +12,17 @@ The Shipment service aggregates the events and produces a Shipment object. The S
 
 ### Execute tests ###
 ```
-cd order-sample
+cd order-service
+mvn clean test
+```
+
+```
+cd order-process-service
+mvn clean test
+```
+
+```
+cd shipment-service
 mvn clean test
 ```
 
@@ -121,7 +131,6 @@ oc new-app order-process-service -e kafka.broker.list=my-cluster-kafka-bootstrap
 cd order-service
 oc new-build --binary --image-stream openjdk18-openshift --name order-service
 oc start-build order-service --from-dir=.
-oc new-app order-service
 ```
 
 - Run a simulated scenario (send 500 orders)
